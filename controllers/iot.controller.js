@@ -23,4 +23,20 @@ device.on('message', function(topic, payload) {
     console.log('message', topic, payload.toString());
   });
 
-  module.exports = device;
+
+exports.publish = async function (req, res) {
+    const message = req.body; // Assuming the message is in the request body
+  
+    device.publish('esp32/pub', JSON.stringify(message), (err) => {
+      if (err) {
+        console.error('Error publishing message:', err);
+        res.status(500).send('Error publishing message');
+      } else {
+        console.log('Message published successfully');
+        res.sendStatus(200);
+      }
+    });
+
+    res.status(200).json({ message });
+}
+

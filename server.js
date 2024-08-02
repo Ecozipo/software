@@ -6,8 +6,8 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 require('dotenv').config();
-require('./config/aws');
 const userRoutes = require('./routes/user.routes');
+const iotRoutes = require('./routes/iot.routes');
 
 
 const middleware = require('./middleware/auth.middleware');
@@ -31,6 +31,7 @@ app.get("/tokenid" , middleware.authGuard , (req ,res) => {
 }  );
 
 app.use('/api/user' , userRoutes);
+app.use('/api/iot' , iotRoutes);
 
 
 app.listen(process.env.PORT , () => {
