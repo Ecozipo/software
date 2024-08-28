@@ -1,1 +1,5 @@
-Ecozipo_2024
+username: eco
+mdp : Ecozipo_2024
+databse_name : tech_eco
+host : eco.cfowq6ommtv0.us-east-1.rds.amazonaws.com
+port : 3306
